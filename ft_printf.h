@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: duzun <davut@uzun.ist>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/24 06:49:19 by duzun             #+#    #+#             */
-/*   Updated: 2022/08/24 22:35:02 by duzun            ###   ########.fr       */
+/*   Created: 2022/08/24 22:32:15 by duzun             #+#    #+#             */
+/*   Updated: 2022/08/24 22:34:10 by duzun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf_h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-int	ft_printf(const char *str, ...)
-{
-	
-}
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdarg.h>
+
+int	ft_printf(const char *str, ...);
+
+
+#endif
