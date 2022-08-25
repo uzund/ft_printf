@@ -6,7 +6,7 @@
 /*   By: duzun <davut@uzun.ist>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 06:49:19 by duzun             #+#    #+#             */
-/*   Updated: 2022/08/25 23:55:39 by duzun            ###   ########.fr       */
+/*   Updated: 2022/08/26 00:35:07 by duzun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ int	ft_printf(const char *str, ...)
 
 int	main(void)
 {
-	ft_printf("d");
+	char	c;
+
+	c = 'A';
+	ft_printf("%c", c);
 	return (0);
 }
