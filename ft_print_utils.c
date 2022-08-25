@@ -6,13 +6,14 @@
 /*   By: duzun <davut@uzun.ist>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 22:02:08 by duzun             #+#    #+#             */
-/*   Updated: 2022/08/25 22:05:01 by duzun            ###   ########.fr       */
+/*   Updated: 2022/08/25 23:16:58 by duzun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putchar(char c)
+int	ft_yazchar(char c)
 {
 	write (1, &c, 1);
+	return (1);
 }

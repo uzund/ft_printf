@@ -1,17 +1,18 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makafile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: duzun <davut@uzun.ist>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/24 19:51:47 by duzun             #+#    #+#              #
-#    Updated: 2022/08/25 22:25:25 by duzun            ###   ########.fr        #
+#    Updated: 2022/08/26 00:09:43 by duzun            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	libftprintf.a
-CFLAGS		=	-Wall -Wextra -Werror
+
+CFLAGS		=	-Wall -Wextra -Werror -I.
 CC			=	gcc
 RM			=	rm -f
 
@@ -20,10 +21,14 @@ SRCS			=	ft_printf.c \
 					 
 OBJS			= $(SRCS:.c=.o)
 
-all:			$(NAME)
-
 $(NAME):		$(OBJS)
-				ar rcs $(NAME) $(OBJS)
+				$(CC) $(CFLAGS) $(OBJS)
+				ar rc $(NAME) $(OBJS)
+
+#%.o: %.c
+#	$(CC) $(CFLAGS) -c $<  -o $@
+			
+all:			$(NAME)
 
 clean:
 				$(RM) $(OBJS)

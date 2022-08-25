@@ -6,7 +6,7 @@
 /*   By: duzun <davut@uzun.ist>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 22:32:15 by duzun             #+#    #+#             */
-/*   Updated: 2022/08/25 22:10:41 by duzun            ###   ########.fr       */
+/*   Updated: 2022/08/25 23:16:56 by duzun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@
 
 int		ft_printf(const char *str, ...);
 int		ft_bicim(char c, va_list arg);
-void	ft_putchr(char c);
+int		ft_yazchar(char c);
 
 #endif
