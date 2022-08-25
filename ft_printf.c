@@ -6,15 +6,20 @@
 /*   By: duzun <davut@uzun.ist>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 06:49:19 by duzun             #+#    #+#             */
-/*   Updated: 2022/08/25 00:53:43 by duzun            ###   ########.fr       */
+/*   Updated: 2022/08/25 22:11:07 by duzun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf_h"
+#include "ft_printf.h"
 
 int	ft_bicim(char c, va_list arg)
 {
-	
+	int	val;
+
+	val = 0;
+	if (c == '%')
+		val += write(1, "%", 1);
+	return (val);
 }
 
 int	ft_printf(const char *str, ...)
@@ -35,6 +40,7 @@ int	ft_printf(const char *str, ...)
 		}
 		else
 			val += ft_putchar(str++);
-			
 	}
+	va_end(arg);
+	return (val);
 }

@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_print_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: duzun <davut@uzun.ist>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/24 22:32:15 by duzun             #+#    #+#             */
-/*   Updated: 2022/08/25 22:10:41 by duzun            ###   ########.fr       */
+/*   Created: 2022/08/25 22:02:08 by duzun             #+#    #+#             */
+/*   Updated: 2022/08/25 22:05:01 by duzun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdarg.h>
-
-int		ft_printf(const char *str, ...);
-int		ft_bicim(char c, va_list arg);
-void	ft_putchr(char c);
-
-#endif
+void	ft_putchar(char c)
+{
+	write (1, &c, 1);
+}
