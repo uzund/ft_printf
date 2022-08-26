@@ -6,7 +6,7 @@
 /*   By: duzun <davut@uzun.ist>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 22:32:15 by duzun             #+#    #+#             */
-/*   Updated: 2022/08/25 23:16:56 by duzun            ###   ########.fr       */
+/*   Updated: 2022/08/26 15:50:09 by duzun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@
 # include <unistd.h>
 # include <stdarg.h>
 
-int		ft_printf(const char *str, ...);
-int		ft_bicim(char c, va_list arg);
-int		ft_yazchar(char c);
+int	ft_printf(const char *str, ...);
+int	ft_bicim(char c, va_list arg);
+int	ft_yazchar(char c);
+int	ft_yazstr(char *str);
 
 #endif

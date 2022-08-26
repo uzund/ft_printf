@@ -6,7 +6,7 @@
 /*   By: duzun <davut@uzun.ist>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 06:49:19 by duzun             #+#    #+#             */
-/*   Updated: 2022/08/26 00:35:07 by duzun            ###   ########.fr       */
+/*   Updated: 2022/08/26 16:20:48 by duzun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	ft_bicim(char c, va_list arg)
 		val += write(1, "%", 1);
 	else if (c == 'c')
 		val += ft_yazchar(va_arg(arg, int));
+	else if (c == 's')
+		val += ft_yazstr(va_arg(arg, char *));
 	return (val);
 }
 
@@ -52,6 +54,6 @@ int	main(void)
 	char	c;
 
 	c = 'A';
-	ft_printf("%c", c);
+	ft_printf("%c %% Davut UZUN \n", c);
 	return (0);
 }
