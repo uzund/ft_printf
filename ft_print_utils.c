@@ -6,7 +6,7 @@
 /*   By: duzun <davut@uzun.ist>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 22:02:08 by duzun             #+#    #+#             */
-/*   Updated: 2022/08/29 00:16:14 by duzun            ###   ########.fr       */
+/*   Updated: 2022/08/29 01:09:34 by duzun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	ft_putnbr(int nbr)
 	if (nbr == -2147483648)
 	{
 		val = ft_putstr("-2147483648");
-		return (val);
+		return (11);
 	}
 	else if (nbr < 0)
 	{
@@ -84,5 +84,16 @@ int	ft_putnbrx(unsigned int nbrx, char c)
 		val += ft_putchar("0123456789abcdef"[nbrx % 16]);
 	else
 		val += ft_putchar("0123456789ABCDEF"[nbrx % 16]);
+	return (val);
+}
+
+int	ft_putp(unsigned long int nbrp)
+{
+	int	val;
+
+	val = 0;
+	if (nbrp >= 16)
+		val += ft_putp(nbrp / 16);
+	val += ft_putchar("0123456789abcdef"[nbrp % 16]);
 	return (val);
 }
