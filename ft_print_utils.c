@@ -6,20 +6,20 @@
 /*   By: duzun <davut@uzun.ist>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 22:02:08 by duzun             #+#    #+#             */
-/*   Updated: 2022/08/26 17:51:03 by duzun            ###   ########.fr       */
+/*   Updated: 2022/08/29 00:16:14 by duzun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-int	ft_yazchar(char c)
+int	ft_putchar(char c)
 {
 	write (1, &c, 1);
 	return (1);
 }
 
-int	ft_yazstr(char *str)
+int	ft_putstr(char *str)
 {
 	int	i;
 
@@ -31,23 +31,58 @@ int	ft_yazstr(char *str)
 	return (i);
 }
 
-int	ft_yaznbr(int nbr)
+int	ft_putnbr(int nbr)
 {
 	int	val;
 
 	val = 0;
 	if (nbr == -2147483648)
 	{
-		val = ft_yazstr("-2147483648");
+		val = ft_putstr("-2147483648");
 		return (val);
 	}
 	else if (nbr < 0)
 	{
-		ft_yazchar('-');
+		ft_putchar('-');
 		nbr = nbr * -1;
 	}
 	if (nbr > 9)
-		val += ft_yaznbr(nbr / 10);
-		val += ft_yazchar("0123456789"[nbr % 10]);
+		val += ft_putnbr(nbr / 10);
+		val += ft_putchar("0123456789"[nbr % 10]);
+	return (val);
+}
+
+int	ft_putnbru(unsigned int nbru)
+{
+	int	val;
+
+	val = 0;
+	if (nbru == 0)
+	{
+		ft_putstr("0");
+		return (1);
+	}
+	if (nbru >= 10)
+		val += ft_putnbru(nbru / 10);
+	val += ft_putchar("0123456789"[nbru % 10]);
+	return (val);
+}
+
+int	ft_putnbrx(unsigned int nbrx, char c)
+{
+	int	val;
+
+	val = 0;
+	if (nbrx == 0)
+	{
+		ft_putstr("0");
+		return (1);
+	}
+	if (nbrx >= 16)
+		val += ft_putnbrx(nbrx / 16, c);
+	if (c == 'x')
+		val += ft_putchar("0123456789abcdef"[nbrx % 16]);
+	else
+		val += ft_putchar("0123456789ABCDEF"[nbrx % 16]);
 	return (val);
 }
