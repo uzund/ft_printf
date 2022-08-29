@@ -6,12 +6,11 @@
 /*   By: duzun <davut@uzun.ist>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 22:02:08 by duzun             #+#    #+#             */
-/*   Updated: 2022/08/29 01:09:34 by duzun            ###   ########.fr       */
+/*   Updated: 2022/08/29 03:11:08 by duzun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 int	ft_putchar(char c)
 {
@@ -21,35 +20,63 @@ int	ft_putchar(char c)
 
 int	ft_putstr(char *str)
 {
-	int	i;
+	char	*ptr;
 
-	i = 0;
-	if (!*str)
-		return (write(1, "(null)", 6));
-	while (str[i])
-		write(1, &str[i++], 1);
-	return (i);
+	if (str)
+	{
+		ptr = (char *) str;
+		while (*ptr)
+			ptr += 1;
+		write(1, str, (ptr - str));
+		return (ptr - str);
+	}
+	else
+		write(1, "(null)", 6);
+	return (6);
+}
+
+size_t	ft_nbrlen(int nbr)
+{
+	int	len;
+
+	len = 0;
+	if (nbr <= 0)
+		len++;
+	while (nbr)
+	{
+		len++;
+		nbr = nbr / 10;
+	}
+	return (len);
 }
 
 int	ft_putnbr(int nbr)
 {
-	int	val;
+	int		len;
+	char	*str;
+	long	num;
 
-	val = 0;
-	if (nbr == -2147483648)
+	len = ft_nbrlen(nbr);
+	num = nbr;
+	str = malloc(sizeof(char) * len + 1);
+	if (!str)
+		return (0);
+	if (num < 0)
 	{
-		val = ft_putstr("-2147483648");
-		return (11);
+		str[0] = '-';
+		num = -1 * num;
 	}
-	else if (nbr < 0)
+	if (num == 0)
+		str[0] = '0';
+	str[len--] = '\0';
+	while (num)
 	{
-		ft_putchar('-');
-		nbr = nbr * -1;
+		str[len--] = num % 10 + '0';
+		num = num / 10;
 	}
-	if (nbr > 9)
-		val += ft_putnbr(nbr / 10);
-		val += ft_putchar("0123456789"[nbr % 10]);
-	return (val);
+	ft_putstr(str);
+	free(str);
+	return (ft_nbrlen(nbr));
 }
 
 int	ft_putnbru(unsigned int nbru)
@@ -65,35 +92,5 @@ int	ft_putnbru(unsigned int nbru)
 	if (nbru >= 10)
 		val += ft_putnbru(nbru / 10);
 	val += ft_putchar("0123456789"[nbru % 10]);
-	return (val);
-}
-
-int	ft_putnbrx(unsigned int nbrx, char c)
-{
-	int	val;
-
-	val = 0;
-	if (nbrx == 0)
-	{
-		ft_putstr("0");
-		return (1);
-	}
-	if (nbrx >= 16)
-		val += ft_putnbrx(nbrx / 16, c);
-	if (c == 'x')
-		val += ft_putchar("0123456789abcdef"[nbrx % 16]);
-	else
-		val += ft_putchar("0123456789ABCDEF"[nbrx % 16]);
-	return (val);
-}
-
-int	ft_putp(unsigned long int nbrp)
-{
-	int	val;
-
-	val = 0;
-	if (nbrp >= 16)
-		val += ft_putp(nbrp / 16);
-	val += ft_putchar("0123456789abcdef"[nbrp % 16]);
 	return (val);
 }
