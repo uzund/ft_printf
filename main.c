@@ -6,7 +6,7 @@
 /*   By: duzun <davut@uzun.ist>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 01:07:17 by duzun             #+#    #+#             */
-/*   Updated: 2022/08/30 02:59:24 by duzun            ###   ########.fr       */
+/*   Updated: 2022/08/30 03:35:42 by duzun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(void)
 	unsigned int	nbru;
 	unsigned int	nbrx;
 	unsigned int	nbrx2;
+	int				ft;
 
 	c = 'A';
 	nbr = -2147483648;
@@ -51,5 +52,15 @@ Heksadesimal büyük harf gösterimi: %X\nPointer Adres gösterimi: %p\n", \
 	val2 = printf("\nMerhaba %d %d %s %c %u  %x %X %p %% \n", \
 	1434, -42, NULL, 'D', 1234567890, 255, 255, &ft_putchar);
 	ft_printf(" Yazdırılan bilgini uzunluk değeri = %d\n", val2);
+	ft_putstr("\n-- Başka Bir Test --");
+	ft = ft_printf("\n%%c = %c\n%%s = %s\n%%d = %d\n%%i = %i\n\
+%%u = %u\n%%p = %p\n%%x = %x\n%%X = %X\n%% = %c\n ", 'u', \
+"davut", -4242, 9672, 8888, &c, 241364, 241364, '%');
+	printf("%d\n", ft);
+	ft = printf("\n%%c = %c\n%%s = %s\n%%d = %d\n%%i = %i\n\
+%%u = %u\n%%p = %p\n%%x = %x\n%%X = %X\n%% = %c\n ", 'u', \
+"davut", -4242, 9672, 8888, &c, 241364, 241364, '%');
+	printf("%d\n", ft);
+	system ("leaks a.out");
 	return (0);
 }
