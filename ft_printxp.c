@@ -6,13 +6,13 @@
 /*   By: duzun <davut@uzun.ist>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 03:07:17 by duzun             #+#    #+#             */
-/*   Updated: 2022/08/29 03:11:57 by duzun            ###   ########.fr       */
+/*   Updated: 2022/08/29 20:51:08 by duzun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	t_putnbrx(unsigned int nbrx, char c)
+int	ft_putnbrx(unsigned int nbrx, char c)
 {
 	int	val;
 
@@ -35,6 +35,11 @@ int	ft_putp(unsigned long int nbrp)
 {
 	int	val;
 
+	if (nbrp == '\0')
+	{
+		write(1, "0", 1);
+		return (1);
+	}
 	val = 0;
 	if (nbrp >= 16)
 		val += ft_putp(nbrp / 16);
