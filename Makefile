@@ -6,7 +6,7 @@
 #    By: duzun <davut@uzun.ist>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/24 19:51:47 by duzun             #+#    #+#              #
-#    Updated: 2022/08/30 03:37:06 by duzun            ###   ########.fr        #
+#    Updated: 2022/08/30 03:41:38 by duzun            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ RM			=	rm -f
 
 SRCS			=	ft_printf.c \
 					ft_print_utils.c \
-					ft_printxp.c \		
+					ft_printxp.c	
 					 
 OBJS			= $(SRCS:.c=.o)
 
