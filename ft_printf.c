@@ -6,7 +6,7 @@
 /*   By: duzun <davut@uzun.ist>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 03:46:30 by duzun             #+#    #+#             */
-/*   Updated: 2022/08/30 03:46:34 by duzun            ###   ########.fr       */
+/*   Updated: 2023/05/22 17:37:22 by duzun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_bicim(char c, va_list arg)
 	else if (c == 'p')
 	{
 		val += write(1, "0x", 2);
-		val += ft_putp(va_arg(arg, unsigned long int));
+		val += ft_putnbrp(va_arg(arg, unsigned long int));
 	}
 	return (val);
 }

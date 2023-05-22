@@ -6,7 +6,7 @@
 /*   By: duzun <davut@uzun.ist>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 03:46:45 by duzun             #+#    #+#             */
-/*   Updated: 2022/08/30 03:46:48 by duzun            ###   ########.fr       */
+/*   Updated: 2023/05/22 17:33:23 by duzun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,9 @@ int		ft_printf(const char *str, ...);
 int		ft_bicim(char c, va_list arg);
 int		ft_putchar(char c);
 int		ft_putstr(char *str);
-size_t	ft_nbrlen(int nbr);
 int		ft_putnbr(int nbr);
 int		ft_putnbru(unsigned int nbru);
 int		ft_putnbrx(unsigned int n, char c);
-int		ft_putp(unsigned long int nbrp);
+int		ft_putnbrp(unsigned long int nbrp);
 
 #endif

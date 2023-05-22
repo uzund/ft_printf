@@ -6,7 +6,7 @@
 /*   By: duzun <davut@uzun.ist>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 03:46:17 by duzun             #+#    #+#             */
-/*   Updated: 2022/08/30 03:46:22 by duzun            ###   ########.fr       */
+/*   Updated: 2023/05/22 17:34:54 by duzun            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,63 +20,34 @@ int	ft_putchar(char c)
 
 int	ft_putstr(char *str)
 {
-	char	*ptr;
-
-	if (str)
-	{
-		ptr = (char *) str;
-		while (*ptr)
-			ptr += 1;
-		write(1, str, (ptr - str));
-		return (ptr - str);
-	}
-	else
-		write(1, "(null)", 6);
-	return (6);
-}
-
-size_t	ft_nbrlen(int nbr)
-{
 	int	len;
 
-	len = 0;
-	if (nbr <= 0)
-		len++;
-	while (nbr)
-	{
-		len++;
-		nbr = nbr / 10;
-	}
+	len = -1;
+	if (!str)
+		return (write(1, "(null)", 6));
+	while (str[++len])
+		write(1, &str[len], 1);
 	return (len);
 }
 
 int	ft_putnbr(int nbr)
 {
-	int		len;
-	char	*str;
-	long	num;
+	int	len;
 
-	len = ft_nbrlen(nbr);
-	num = nbr;
-	str = malloc(sizeof(char) * len + 1);
-	if (!str)
-		return (0);
-	if (num < 0)
+	len = 0;
+	if (nbr == 0)
+		return (write(1, "0", 1));
+	if (nbr == -2147483648)
+		return (write(1, "-2147483648", 11));
+	if (nbr < 0)
 	{
-		str[0] = '-';
-		num = -1 * num;
+		len += write(1, "-", 1);
+		nbr *= -1;
 	}
-	if (num == 0)
-		str[0] = '0';
-	str[len--] = '\0';
-	while (num)
-	{
-		str[len--] = num % 10 + '0';
-		num = num / 10;
-	}
-	ft_putstr(str);
-	free(str);
-	return (ft_nbrlen(nbr));
+	if (nbr >= 10)
+		len += ft_putnbr(nbr / 10);
+	write(1, &"0123456789"[nbr % 10], 1);
+	return (len + 1);
 }
 
 int	ft_putnbru(unsigned int nbru)
@@ -84,13 +55,8 @@ int	ft_putnbru(unsigned int nbru)
 	int	val;
 
 	val = 0;
-	if (nbru == 0)
-	{
-		ft_putstr("0");
-		return (1);
-	}
 	if (nbru >= 10)
 		val += ft_putnbru(nbru / 10);
-	val += ft_putchar("0123456789"[nbru % 10]);
-	return (val);
+	write(1, &"0123456789"[nbru % 10], 1);
+	return (val + 1);
 }
